@@ -1,3 +1,10 @@
 <h1 class="border-bottom p-2 mb-3">Store Angular</h1>
 
-<app-product-list [products]="products"></app-product-list>
+<ng-container *ngIf="currentView == 'LIST'">
+   <app-product-list [products]="products" (onViewDetails)="viewDetails($event)"></app-product-list> 
+</ng-container>
+
+<ng-container *ngIf="currentView == 'DETAILS'">
+    <app-product-details [product]="selectedProduct"></app-product-details>
+</ng-container>
+

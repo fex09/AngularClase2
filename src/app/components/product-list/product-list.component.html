@@ -16,8 +16,8 @@
       <td class="text-right">${{product.Price}}</td>
       <td class="text-right">{{product.Quantity}}</td>
       <td class="text-center p-2">
-          <button class="btn btn-info btn-sm" type="button">Details</button>
-        </td>
+        <button class="btn btn-info btn-sm" type="button" (click)="ViewDetails(product.Id)">Details</button>
+      </td>
     </tr>
   </tbody>
 </table>
