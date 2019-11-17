@@ -12,6 +12,7 @@ export class ProductListComponent implements OnInit {
 
   @Input() products: Product[];
   @Output() onViewDetails = new EventEmitter<number>();
+  @Output() onEditDetails = new EventEmitter<number>();
 
   constructor() { }
 
@@ -20,6 +21,10 @@ export class ProductListComponent implements OnInit {
 
   public ViewDetails(id: number): void {
     this.onViewDetails.emit(id);
+  }
+
+  public ViewEditDetails(id: number): void {
+    this.onEditDetails.emit(id);
   }
 
 }

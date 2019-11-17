@@ -1,0 +1,34 @@
+<h1 class="border-bottom p-2 mb-3">Edit Product</h1>
+<div class="row">
+        <div class="col-md-6">
+          <form>
+            <div class="form-group">
+              <label>Id</label>
+              <input class="form-control" name="Id" type="number" disabled="disabled" [(ngModel)]="lproduct.Id" />
+            </div>
+            <div class="form-group">
+              <label>Name</label>
+              <input id="inpName" class="form-control" name="name" type="text"  [(ngModel)]="lproduct.Name"/>
+            </div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea class="form-control" name="description" [(ngModel)]="lproduct.Description"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Image</label>
+              <input class="form-control" name="image" type="url" [(ngModel)]="lproduct.Image"/>
+            </div>
+            <div class="form-group">
+              <label>Price</label>
+              <input class="form-control" name="Id" type="number" [(ngModel)]="lproduct.Price" />
+            </div>
+            <div class="form-group">
+              <label>Quantity</label>
+              <input class="form-control" name="Id" type="number" [(ngModel)]="lproduct.Quantity" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" (click)="saveProduct()">Update</button>
+            </div>
+          </form>
+        </div>
+      </div>
