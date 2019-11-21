@@ -1,30 +1,30 @@
 <h1 class="border-bottom p-2 mb-3">Edit Product</h1>
 <div class="row">
         <div class="col-md-6">
-          <form>
+          <form [formGroup]="productEditForm">
             <div class="form-group">
               <label>Id del producto</label>
-              <input class="form-control"  name="Id" id="lblId" [(ngModel)]="product.Id" disabled="disabled"/>
+              <input class="form-control"  formControlName="Id" disabled="disabled"/>
             </div>
             <div class="form-group">
               <label>Name</label>
-              <input id="inpName" class="form-control" name="name" type="text" [(ngModel)]="product.Name"  />
+              <input id="inpName" class="form-control" formControlName="name" type="text"   />
             </div>
             <div class="form-group">
               <label>Description</label>
-              <textarea class="form-control" name="description" [(ngModel)]="product.Description" ></textarea>
+              <textarea class="form-control" formControlName="description" ></textarea>
             </div>
             <div class="form-group">
               <label>Image</label>
-              <input class="form-control" name="image" type="url" [(ngModel)]="product.Image" />
+              <input class="form-control" formControlName="image" type="url"/>
             </div>
             <div class="form-group">
               <label>Price</label>
-              <input class="form-control" name="price" type="number" [(ngModel)]="product.Price" />
+              <input class="form-control" formControlName="price" type="number"/>
             </div>
             <div class="form-group">
               <label>Quantity</label>
-              <input class="form-control" name="quantity" type="number" [(ngModel)]="product.Quantity"  />
+              <input class="form-control" formControlName="quantity" type="number"  />
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit" (click)="saveProduct()">Update</button>
