@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 // Models
 import { Product } from 'src/app/models/product';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-product-add',
@@ -20,7 +21,11 @@ export class ProductAddComponent implements OnInit {
   ngOnInit() {
   }
 
-  public saveProduct(): void {
+  public saveProduct(form: NgForm): void {
+    if (form.invalid) {
+      alert('Formulareio inválido!');
+      return;
+    }
     this.onSaveProduct.emit(this.product);
     this.resetForm();
   }

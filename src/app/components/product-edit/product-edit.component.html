@@ -1,34 +1,66 @@
 <h1 class="border-bottom p-2 mb-3">Edit Product</h1>
 <div class="row">
-        <div class="col-md-6">
-          <form [formGroup]="productEditForm">
-            <div class="form-group">
-              <label>Id del producto</label>
-              <input class="form-control"  formControlName="Id" disabled="disabled"/>
-            </div>
-            <div class="form-group">
-              <label>Name</label>
-              <input id="inpName" class="form-control" formControlName="name" type="text"   />
-            </div>
-            <div class="form-group">
-              <label>Description</label>
-              <textarea class="form-control" formControlName="description" ></textarea>
-            </div>
-            <div class="form-group">
-              <label>Image</label>
-              <input class="form-control" formControlName="image" type="url"/>
-            </div>
-            <div class="form-group">
-              <label>Price</label>
-              <input class="form-control" formControlName="price" type="number"/>
-            </div>
-            <div class="form-group">
-              <label>Quantity</label>
-              <input class="form-control" formControlName="quantity" type="number"  />
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" type="submit" (click)="saveProduct()">Update</button>
-            </div>
-          </form>
+  <div class="col-md-6">
+    <form [formGroup]="productEditForm">
+      <div class="form-group">
+        <label>Id del producto</label>
+        <input class="form-control" formControlName="Id" type="number"
+          [ngClass]="{'is-invalid': productEditForm.get('Id').invalid && productEditForm.get('Id').dirty}" />
+        <div class="invalid-feedback">
+          <div *ngIf=" productEditForm.get('Id').hasError('required')">Required field</div>
+          <div *ngIf=" productEditForm.get('Id').hasError('minlength')">You must enter a value greater or equal than 0
+          </div>
         </div>
       </div>
+      <div class="form-group">
+        <label>Name</label>
+        <input id="inpName" class="form-control" formControlName="name" type="text" maxlength="50"
+          [ngClass]="{'is-invalid': productEditForm.get('name').invalid && productEditForm.get('name').dirty}" />
+        <div class="invalid-feedback">
+          <div *ngIf=" productEditForm.get('name').hasError('required')">Required field</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" formControlName="description" maxlength="4000"
+          [ngClass]="{'is-invalid': productEditForm.get('description').invalid && productEditForm.get('description').dirty}"></textarea>
+        <div class="invalid-feedback">
+          <div *ngIf=" productEditForm.get('description').hasError('required')">Required field</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Image</label>
+        <input class="form-control" formControlName="image" type="url"
+          [ngClass]="{'is-invalid': productEditForm.get('image').invalid && productEditForm.get('image').dirty}" />
+        <div class="invalid-feedback">
+          <div *ngIf=" productEditForm.get('image').hasError('required')">Required field</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Price</label>
+        <input class="form-control" formControlName="price" type="number"
+          [ngClass]="{'is-invalid': productEditForm.get('price').invalid && productEditForm.get('price').dirty}" />
+        <div class="invalid-feedback">
+          <div *ngIf=" productEditForm.get('price').hasError('required')">Required field</div>
+          <div *ngIf=" productEditForm.get('Id').hasError('minlength')">You must enter a value greater or equal than 0
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Quantity</label>
+        <input class="form-control" formControlName="quantity" type="number"
+          [ngClass]="{'is-invalid': productEditForm.get('quantity').invalid && productEditForm.get('quantity').dirty}" />
+        <div class="invalid-feedback">
+          <div *ngIf=" productEditForm.get('quantity').hasError('required')">Required field</div>
+          <div *ngIf=" productEditForm.get('quantity').hasError('minlength')">You must enter a value greater or equal
+            than 0
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" [disabled]="!productEditForm.valid"
+          (click)="saveProduct()">Update</button>
+      </div>
+    </form>
+  </div>
+</div>

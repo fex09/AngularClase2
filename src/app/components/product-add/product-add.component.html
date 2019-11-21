@@ -1,33 +1,61 @@
 <h1 class="border-bottom p-2 mb-3">Add New Product</h1>
 <div class="row">
   <div class="col-md-6">
-    <form>
+    <form #addProductForm="ngForm">
       <div class="form-group">
         <label>Id del Producto</label>
-        <input class="form-control" name="Id" type="number" [(ngModel)]="product.Id" />
+        <input #id="ngModel" class="form-control" name="Id" type="number" required minlength="1"
+          [ngClass]="{ 'is-invalid' : addProductForm.submitted && id.invalid }" [(ngModel)]="product.Id" />
+        <div class="invalid-feedback">
+          <div *ngIf="id.hasError('required')">Required field</div>
+          <div *ngIf="id.hasError('minlength')">Valores mayor a 0</div>
+        </div>
       </div>
       <div class="form-group">
         <label>Name</label>
-        <input class="form-control" name="name" type="text" [(ngModel)]="product.Name" />
+        <input #name="ngModel" class="form-control" name="name" required maxlength="50" type="text"
+          [(ngModel)]="product.Name" [ngClass]="{ 'is-invalid' : name.dirty && name.invalid }" />
+        <div class="invalid-feedback">
+          <div *ngIf="name.hasError('required')">Required field</div>
+        </div>
       </div>
       <div class="form-group">
         <label>Description</label>
-        <textarea class="form-control" name="description" [(ngModel)]="product.Description"></textarea>
+        <textarea #description="ngModel" class="form-control" name="description" required maxlength="4000"
+          [(ngModel)]="product.Description" [ngClass]="{ 'is-invalid' : description.dirty && description.invalid }"></textarea>
+        <div class="invalid-feedback">
+          <div *ngIf="description.hasError('required')">Required field</div>
+        </div>
       </div>
       <div class="form-group">
         <label>Image</label>
-        <input class="form-control" name="image" type="url" [(ngModel)]="product.Image"/>
+        <input #image="ngModel" class="form-control" name="image" type="url" required maxlength="100"
+          [(ngModel)]="product.Image" [ngClass]="{ 'is-invalid' : image.dirty && image.invalid }" />
+        <div class="invalid-feedback">
+          <div *ngIf="image.hasError('required')">Required field</div>
+        </div>
       </div>
       <div class="form-group">
         <label>Price</label>
-        <input class="form-control" name="price" type="number" [(ngModel)]="product.Price" />
+        <input #price="ngModel" class="form-control" name="price" type="number" required minlength="0"
+          [(ngModel)]="product.Price" [ngClass]="{ 'is-invalid' : price.dirty && price.invalid }" />
+        <div class="invalid-feedback">
+          <div *ngIf="price.hasError('required')">Required field</div>
+          <div *ngIf="price.hasError('minlength')">Valor mayor a 0</div>
+        </div>
       </div>
       <div class="form-group">
         <label>Quantity</label>
-        <input class="form-control" name="quantity" type="number" [(ngModel)]="product.Quantity" />
+        <input #quantity="ngModel" class="form-control" name="quantity" type="number" required minlength="0"
+          [(ngModel)]="product.Quantity" [ngClass]="{ 'is-invalid' : quantity.dirty && quantity.invalid }" />
+        <div class="invalid-feedback">
+          <div *ngIf="quantity.hasError('required')">Required field</div>
+          <div *ngIf="quantity.hasError('minlength')">Valor mayor a 0</div>
+        </div>
       </div>
       <div class="form-group">
-          <button class="btn btn-primary" type="submit" (click)="saveProduct()">Save</button>
+        <button class="btn btn-primary" type="submit" [disabled]="!addProductForm.valid"
+          (click)="saveProduct(addProductForm)">Save</button>
       </div>
     </form>
   </div>

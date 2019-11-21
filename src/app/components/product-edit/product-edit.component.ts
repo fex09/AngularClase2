@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 
 // Models
 import { Product } from 'src/app/models/product';
@@ -20,16 +20,20 @@ export class ProductEditComponent implements OnInit {
 
   ngOnInit() {
     this.productEditForm = this.formsBuilder.group({
-      Id: this.formsBuilder.control(this.product.Id),
-      name: this.formsBuilder.control(this.product.Name),
-      description: this.formsBuilder.control(this.product.Description),
-      image: this.formsBuilder.control(this.product.Image),
-      quantity: this.formsBuilder.control(this.product.Quantity),
-      price: this.formsBuilder.control(this.product.Price),
+      Id: this.formsBuilder.control(this.product.Id,[Validators.required, Validators.minLength(1)]),
+      name: this.formsBuilder.control(this.product.Name,[Validators.required, Validators.maxLength(50)]),
+      description: this.formsBuilder.control(this.product.Description,[Validators.required,Validators.maxLength(4000)]),
+      image: this.formsBuilder.control(this.product.Image,[Validators.required, Validators.maxLength(100)]),
+      quantity: this.formsBuilder.control(this.product.Quantity,[Validators.required, Validators.minLength(0)]),
+      price: this.formsBuilder.control(this.product.Price,[Validators.required, Validators.maxLength(0)]),
     });
   }
 
   public saveProduct(): void {
+    if (this.productEditForm.invalid) {
+      alert('Product Invalid!');
+      return;
+    }
     this.product.Id = this.productEditForm.get('Id').value;
     this.product.Name = this.productEditForm.get('name').value;
     this.product.Description = this.productEditForm.get('description').value;
