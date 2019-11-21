@@ -9,24 +9,13 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-
-  @Output() onEditProduct = new EventEmitter<Product>();
   @Input() product: Product;
-  public lproduct: Product;
+  @Output() onEditProduct = new EventEmitter<Product>();
 
   constructor() {
   }
 
   ngOnInit() {
-  }
-
-  public loadProduct(): void {
-    this.lproduct.Id = this.product.Id;
-    this.lproduct.Description = this.product.Description;
-    this.lproduct.Image = this.product.Image;
-    this.lproduct.Name =  this.product.Name;
-    this.lproduct.Quantity = this.product.Quantity;
-    this.lproduct.Price = this.product.Price;
   }
 
   public saveProduct(): void {
@@ -35,7 +24,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   public resetForm(): void {
-    this.product = new Product();
+    // this.product = new Product();
   }
 
 }

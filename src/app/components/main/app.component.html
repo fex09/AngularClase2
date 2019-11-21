@@ -17,6 +17,6 @@
 
 <ng-container *ngIf="currentView == 'EDIT'">
         <button class="btn btn-secondary" type="button" (click)="back()">Back</button>
-        <app-product-edit (onEditProduct)="editProduct($event)" ></app-product-edit>
+        <app-product-edit (onEditProduct)="editProduct($event)" [product]="selectedProduct" ></app-product-edit>
 </ng-container>
 

@@ -3,28 +3,28 @@
         <div class="col-md-6">
           <form>
             <div class="form-group">
-              <label>Id</label>
-              <input class="form-control" name="Id" type="number" disabled="disabled" [(ngModel)]="lproduct.Id" />
+              <label>Id del producto</label>
+              <input class="form-control"  name="Id" id="lblId" [(ngModel)]="product.Id" disabled="disabled"/>
             </div>
             <div class="form-group">
               <label>Name</label>
-              <input id="inpName" class="form-control" name="name" type="text"  [(ngModel)]="lproduct.Name"/>
+              <input id="inpName" class="form-control" name="name" type="text" [(ngModel)]="product.Name"  />
             </div>
             <div class="form-group">
               <label>Description</label>
-              <textarea class="form-control" name="description" [(ngModel)]="lproduct.Description"></textarea>
+              <textarea class="form-control" name="description" [(ngModel)]="product.Description" ></textarea>
             </div>
             <div class="form-group">
               <label>Image</label>
-              <input class="form-control" name="image" type="url" [(ngModel)]="lproduct.Image"/>
+              <input class="form-control" name="image" type="url" [(ngModel)]="product.Image" />
             </div>
             <div class="form-group">
               <label>Price</label>
-              <input class="form-control" name="Id" type="number" [(ngModel)]="lproduct.Price" />
+              <input class="form-control" name="price" type="number" [(ngModel)]="product.Price" />
             </div>
             <div class="form-group">
               <label>Quantity</label>
-              <input class="form-control" name="Id" type="number" [(ngModel)]="lproduct.Quantity" />
+              <input class="form-control" name="quantity" type="number" [(ngModel)]="product.Quantity"  />
             </div>
             <div class="form-group">
                 <button class="btn btn-primary" type="submit" (click)="saveProduct()">Update</button>

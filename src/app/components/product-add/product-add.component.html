@@ -3,7 +3,7 @@
   <div class="col-md-6">
     <form>
       <div class="form-group">
-        <label>Id</label>
+        <label>Id del Producto</label>
         <input class="form-control" name="Id" type="number" [(ngModel)]="product.Id" />
       </div>
       <div class="form-group">
@@ -20,11 +20,11 @@
       </div>
       <div class="form-group">
         <label>Price</label>
-        <input class="form-control" name="Id" type="number" [(ngModel)]="product.Price" />
+        <input class="form-control" name="price" type="number" [(ngModel)]="product.Price" />
       </div>
       <div class="form-group">
         <label>Quantity</label>
-        <input class="form-control" name="Id" type="number" [(ngModel)]="product.Quantity" />
+        <input class="form-control" name="quantity" type="number" [(ngModel)]="product.Quantity" />
       </div>
       <div class="form-group">
           <button class="btn btn-primary" type="submit" (click)="saveProduct()">Save</button>

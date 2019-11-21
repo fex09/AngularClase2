@@ -74,5 +74,6 @@ export class AppComponent {
     pEdit.Name = pProduct.Name;
     pEdit.Price = pProduct.Price;
     pEdit.Quantity = pProduct.Quantity;
+    this.currentView = 'LIST';
   }
 }
